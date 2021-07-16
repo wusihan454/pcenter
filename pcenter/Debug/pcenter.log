@@ -1,2 +1,3 @@
 ﻿  pcenter.cpp
-  pcenter.vcxproj -> C:\Users\吴思晗\source\repos\pcenter\Debug\pcenter.exe
+C:\Users\belle\Desktop\基础训练\pcenter\pcenter\pcenter.cpp(417): warning C4244: “初始化”: 从“clock_t”转换到“float”，可能丢失数据
+  pcenter.vcxproj -> C:\Users\belle\Desktop\基础训练\pcenter\Debug\pcenter.exe
