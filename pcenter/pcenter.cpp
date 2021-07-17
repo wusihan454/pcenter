@@ -20,6 +20,7 @@ void readtxt()
 void create_init_solution()
 {
 	selected = new bool[point];
+	center = new int[point];
 	best_selected = new bool[point];
 	last_selected = new bool[point];
 	fix = new bool[point];
@@ -36,6 +37,7 @@ void create_init_solution()
 		selected[i] = false;
 		uncovered[i] = true;
 		fix[i] = false;
+		center[i] = 0;
 	}
 	//判断需要提前固定下来的节点
 	for (int i = 0; i < point; i++)
@@ -46,6 +48,7 @@ void create_init_solution()
 			fix[i] = true;
 			selected[i] = true;
 			uncovered[i] = false;
+			center[i] = 1;
 		}
 	}
 	for (int i = 0; i < centernumber - fixcount; i++)
@@ -83,6 +86,7 @@ void create_init_solution()
 		for (int k = 0; k < neighbor_number[lastnumber]; k++)
 		{
 			uncovered[map[lastnumber][k]] = false;
+			center[map[lastnumber][k]]++;
 		}
 	}
 	memcpy(last_selected, selected, point * sizeof(bool));
@@ -102,13 +106,9 @@ void create_init_solution()
 		{
 			for (int j = 0; j < neighbor_number[i]; j++)
 			{
-				int temp = 0;
 				int neighbor = map[i][j];
-				for (int k = 0; k < neighbor_number[neighbor]; k++)
-				{
-					if (selected[map[neighbor][k]]) temp++;
-				}
-				if (temp == 1) delta[i] = delta[i] + W[neighbor];
+
+				if (center[neighbor] == 1) delta[i] = delta[i] + W[neighbor];
 			}
 		}
 		else//未选中节点的delta值计算 ，计算未选中节点覆盖范围内目前没有被覆盖的节点 
@@ -139,37 +139,35 @@ void  trytoopencenter(int addi)//试图将i节点加入center但是并没有真�
 	for (int i = 0; i < neighbor_number[addi]; i++)
 	{
 		int l = map[addi][i];
-		int temp = 0;
-		int mark = 0;
-		for (int j = 0; j < neighbor_number[l]; j++)
+		if (center[l] == 1)
 		{
-			int x = map[l][j];
-			if (selected[x])
+			for (int j = 0; j < neighbor_number[l]; j++)
 			{
-				temp++;
-				mark = x;
+				if (selected[map[l][j]])
+				{
+					int mark = map[l][j];
+					delta[mark] = delta[mark] - W[l];
+					break;
+				}
 			}
 		}
-		if (temp == 1) delta[mark] = delta[mark] - W[l];
 	}
 }
 void find_best_SWAP()//返回要选择的交换对的下标 ,选择的要交换的不一定有上一次的好 
 {
 	int best_obj = -1;//无穷
-	int uncoveredv = -1;
+	int uncoveredv;
 	/*从uncovered节点里面随机选择一个节点uncoveredv*/
-	int random_num = 0;
+	vector<int> all_uncovered;
 	for (int i = 0; i < point; i++)
 	{
 		if (uncovered[i])
 		{
-			random_num++;
-			if (rand() % random_num == 0)
-			{
-				uncoveredv = i;
-			}
+			all_uncovered.push_back(i);
 		}
 	}
+	int choose = rand() % all_uncovered.size();
+	uncoveredv = all_uncovered[choose];
 	/* 将目前的delta表格复制备份 */
 	memcpy(delta_copy, delta, point * sizeof(int));
 	int seq;
@@ -177,31 +175,34 @@ void find_best_SWAP()//返回要选择的交换对的下标 ,选择的要交换�
 	for (int i = 0; i < neighbor_number[uncoveredv]; i++)
 	{
 		int l = map[uncoveredv][i];
-		trytoopencenter(l);
-		for (int j = 0; j < point; j++)
+		if (tabu[l] < iter)
 		{
-			if (selected[j] && !fix[j] && !(tabu[i] >= iter && tabu[j] >= iter))//j没有被禁忌 ，且是center节点 ,并且没有被固定
+			trytoopencenter(l);
+			for (int j = 0; j < point; j++)
 			{
-				marking = true;
-				if ((best_obj > f - delta[l] + delta[j]) || best_obj == -1)//达到局部最优 
+				if (selected[j] && !fix[j] && tabu[j] < iter)//j没有被禁忌 ，且是center节点 ,并且没有被固定
 				{
-					seq = 1;
-					best_obj = f - delta[l] + delta[j];
-					M.i = l;
-					M.j = j;
-				}
-				else if (best_obj == f - delta[l] + delta[j])
-				{
-					seq++;
-					if (rand() % seq == 0)
+					marking = true;
+					if ((best_obj > f - delta[l] + delta[j]) || best_obj == -1)//达到局部最优 
 					{
+						seq = 1;
+						best_obj = f - delta[l] + delta[j];
 						M.i = l;
 						M.j = j;
 					}
+					else if (best_obj == f - delta[l] + delta[j])
+					{
+						seq++;
+						if (rand() % seq == 0)
+						{
+							M.i = l;
+							M.j = j;
+						}
+					}
 				}
 			}
+			memcpy(delta, delta_copy, point * sizeof(int));
 		}
-		memcpy(delta, delta_copy, point * sizeof(int));
 	}
 	if (!marking) {
 		M.i = -1;
@@ -215,7 +216,7 @@ void makeSWAP(int addi, int delj)//加入addi节点，删除delj节点,更新交
 		int v = map[addi][i];
 		int temp = 0;
 		int mark;
-		for (int j = 0; j < neighbor_number[v]; j++)
+		/*for (int j = 0; j < neighbor_number[v]; j++)
 		{
 			int l = map[v][j];
 			if (selected[l])
@@ -223,29 +224,47 @@ void makeSWAP(int addi, int delj)//加入addi节点，删除delj节点,更新交
 				temp++;
 				mark = l;
 			}
-		}
-		if (temp == 0)
+		}*/
+		if (center[v] == 0)
 		{
 			for (int j = 0; j < neighbor_number[v]; j++)
 			{
 				int x = map[v][j];
 				if (x != addi) delta[x] = delta[x] - W[v];
 			}
-
 		}
-		if (temp == 1)
+		else if (center[v] == 1)
 		{
-			delta[mark] = delta[mark] - W[v];
+			for (int j = 0; j < neighbor_number[v]; j++)
+			{
+				int mark= map[v][j];
+				if (selected[mark])
+				{
+					delta[mark] = delta[mark] - W[v];
+				}
+			}	
 		}
 	}
 	selected[addi] = true;
 	selected[delj] = false;
+	for (int i = 0; i < neighbor_number[addi]; i++)
+	{
+		int mark = map[addi][i];
+		center[mark]++;
+	}
+	for (int i = 0; i < neighbor_number[delj]; i++)
+	{
+		int mark = map[delj][i];
+		center[mark]--;
+		if (center[mark] < 0)
+			printf("异常\n");
+	}
 	for (int i = 0; i < neighbor_number[delj]; i++)
 	{
 		int v = map[delj][i];
 		int temp = 0;
 		int mark;
-		for (int j = 0; j < neighbor_number[v]; j++)
+		/*for (int j = 0; j < neighbor_number[v]; j++)
 		{
 			int l = map[v][j];
 			if (selected[l])
@@ -253,8 +272,8 @@ void makeSWAP(int addi, int delj)//加入addi节点，删除delj节点,更新交
 				temp++;
 				mark = l;
 			}
-		}
-		if (temp == 0)//1->0
+		}*/
+		if(center[v]==0)
 		{
 			for (int j = 0; j < neighbor_number[v]; j++)
 			{
@@ -262,9 +281,17 @@ void makeSWAP(int addi, int delj)//加入addi节点，删除delj节点,更新交
 				if (x != delj) delta[x] = delta[x] + W[v];
 			}
 		}
-		if (temp == 1)//2->1
+		if(center[v]==1)
 		{
-			delta[mark] = delta[mark] + W[v];
+			for (int j = 0; j < neighbor_number[v]; j++)
+			{
+				int mark = map[v][j];
+				if (selected[mark])
+				{
+					delta[mark] = delta[mark] + W[v];
+					break;
+				}
+			}
 		}
 	}
 }
@@ -297,6 +324,7 @@ void search()
 	{
 		memcpy(last_selected, selected, point * sizeof(bool));
 		memcpy(last_uncovered, uncovered, point * sizeof(bool));
+		last_uncovered_num = uncovered_num;
 		find_best_SWAP();
 		if (M.i == -1 && M.j == -1)
 		{
@@ -305,7 +333,6 @@ void search()
 			continue;
 		}
 		makeSWAP(M.i, M.j);
-		printf("makeswap,M.i,%d m.j，%d\n", M.i, M.j);
 		for (int i = 0; i < neighbor_number[M.i]; i++)
 		{
 			int l = map[M.i][i];
@@ -332,6 +359,8 @@ void search()
 		{
 			memcpy(best_uncovered, uncovered, point * sizeof(bool));
 			memcpy(best_selected, selected, point * sizeof(bool));
+			best_uncovered_num = uncovered_num;
+			printf("best_uncovered %d\n", best_uncovered_num);
 		}
 		else if (last_uncovered_num <= uncovered_num)
 		{
@@ -392,7 +421,7 @@ int main(int argc, char* argv[])
 int main()
 {
 	FILE* stream1;
-	freopen_s(&stream1, "./data/pmed28.n600p60.txt", "r", stdin);
+	freopen_s(&stream1, "./data/pcb3038p30r393.50.txt", "r", stdin);
 	//freopen_s(&stream1, "out.txt", "w", stdout);
 	int tm = 12345;
 	timelimit = 1000;
@@ -402,7 +431,7 @@ int main()
 	search();
 	check();
 	end_t = clock();//时钟检测
-	float usedtime = (end_t - start_t) / CLOCKS_PER_SEC;
+	float usedtime = (float(end_t - start_t)) / CLOCKS_PER_SEC;
 	printf("\n using time: %f\n", usedtime);
 	fclose(stdin);//关闭文件 
 	for (int i = 0; i < point; i++)

@@ -27,6 +27,7 @@ int* W;//所有节点的权重值
 int* delta;//所有节点的delta值 
 int* delta_copy;
 int* neighbor_number;
+int* center;//每一个节点周围中心节点的数量
 int best_uncovered_num;
 int last_uncovered_num;
 int uncovered_num;
