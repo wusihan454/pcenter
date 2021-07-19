@@ -1,0 +1,3 @@
+uncovered number:0
+665 744 749 777 899 
+run time: 9.549000

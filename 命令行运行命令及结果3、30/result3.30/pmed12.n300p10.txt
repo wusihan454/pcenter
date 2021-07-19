@@ -1,0 +1,7 @@
+uncovered number:0
+5 22 24 43 97 114 180 193 296 299 
+run time: 0.152000
+uncovered number:0
+run time: 0.133000
+uncovered number:0
+run time: 0.143000

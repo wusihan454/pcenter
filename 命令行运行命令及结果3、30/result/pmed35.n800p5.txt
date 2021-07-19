@@ -1,0 +1,3 @@
+uncovered number:0
+181 343 348 504 799 
+run time: 10.923000

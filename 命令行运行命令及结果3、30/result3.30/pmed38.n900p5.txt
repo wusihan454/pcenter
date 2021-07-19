@@ -1,0 +1,7 @@
+uncovered number:0
+665 744 749 777 899 
+run time: 7.838000
+uncovered number:0
+run time: 6.610000
+uncovered number:0
+run time: 6.322000

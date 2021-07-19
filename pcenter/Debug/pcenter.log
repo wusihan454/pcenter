@@ -1,3 +1,5 @@
 ﻿  pcenter.cpp
-C:\Users\belle\Desktop\基础训练\pcenter\pcenter\pcenter.cpp(417): warning C4244: “初始化”: 从“clock_t”转换到“float”，可能丢失数据
-  pcenter.vcxproj -> C:\Users\belle\Desktop\基础训练\pcenter\Debug\pcenter.exe
+C:\Users\吴思晗\Desktop\pcenter\pcenter\pcenter.cpp(252): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\吴思晗\Desktop\pcenter\pcenter\pcenter.cpp(243): warning C4101: “mark”: 未引用的局部变量
+C:\Users\吴思晗\Desktop\pcenter\pcenter\pcenter.cpp(301): warning C4101: “mark”: 未引用的局部变量
+  pcenter.vcxproj -> C:\Users\吴思晗\Desktop\pcenter\Debug\pcenter.exe

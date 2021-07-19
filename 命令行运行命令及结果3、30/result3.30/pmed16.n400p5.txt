@@ -1,0 +1,7 @@
+uncovered number:0
+19 24 58 225 377 
+run time: 0.178000
+uncovered number:0
+run time: 0.150000
+uncovered number:0
+run time: 0.136000

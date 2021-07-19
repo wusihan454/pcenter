@@ -26,8 +26,10 @@ int* tabu;
 int* W;//所有节点的权重值 
 int* delta;//所有节点的delta值 
 int* delta_copy;
+int* covered_by;//记录每一个节点被谁覆盖着
 int* neighbor_number;
 int* center;//每一个节点周围中心节点的数量
+int* all_selected;
 int best_uncovered_num;
 int last_uncovered_num;
 int uncovered_num;
@@ -36,6 +38,7 @@ int iter;//迭代次数
 clock_t start_t;
 clock_t end_t;
 int timelimit;
+vector<int> all_uncovered;
 char datapath[256], resultpath[256];
 void readtxt();
 void create_init_solution();
@@ -43,5 +46,6 @@ void  trytoopencenter(int addi);
 void find_best_SWAP();
 void makeSWAP(int addi, int delj);
 void search();
+void realse_mem();
 #endif // !_PCENTER_H_
 //内存需要释放

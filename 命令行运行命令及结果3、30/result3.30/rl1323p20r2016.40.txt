@@ -1,0 +1,7 @@
+uncovered number:0
+57 103 141 166 176 184 238 252 281 289 483 542 681 769 811 918 977 1033 1152 1301 
+run time: 27.804001
+uncovered number:0
+run time: 31.084000
+uncovered number:0
+run time: 30.618000

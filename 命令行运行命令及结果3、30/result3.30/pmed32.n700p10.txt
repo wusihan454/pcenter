@@ -1,0 +1,7 @@
+uncovered number:0
+155 160 208 219 309 338 378 425 610 699 
+run time: 1.554000
+uncovered number:0
+run time: 1.557000
+uncovered number:0
+run time: 1.231000

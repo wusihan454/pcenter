@@ -1,0 +1,7 @@
+uncovered number:0
+1 6 84 89 198 237 308 344 356 398 
+run time: 0.250000
+uncovered number:0
+run time: 0.251000
+uncovered number:0
+run time: 0.204000

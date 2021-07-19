@@ -1,0 +1,7 @@
+uncovered number:0
+61 94 156 181 276 278 299 362 459 473 
+run time: 3.501000
+uncovered number:0
+run time: 2.843000
+uncovered number:0
+run time: 2.623000

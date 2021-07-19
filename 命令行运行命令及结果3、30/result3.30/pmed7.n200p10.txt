@@ -1,0 +1,7 @@
+uncovered number:0
+12 45 94 99 104 142 163 179 182 185 
+run time: 0.105000
+uncovered number:0
+run time: 0.079000
+uncovered number:0
+run time: 0.082000

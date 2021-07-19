@@ -1,0 +1,3 @@
+uncovered number:0
+151 214 230 517 691 
+run time: 0.671000

@@ -1,0 +1,7 @@
+uncovered number:0
+15 20 142 162 202 
+run time: 0.679000
+uncovered number:0
+run time: 0.553000
+uncovered number:0
+run time: 0.554000

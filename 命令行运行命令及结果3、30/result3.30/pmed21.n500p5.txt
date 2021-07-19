@@ -1,0 +1,7 @@
+uncovered number:0
+48 169 190 448 493 
+run time: 0.263000
+uncovered number:0
+run time: 0.213000
+uncovered number:0
+run time: 0.212000

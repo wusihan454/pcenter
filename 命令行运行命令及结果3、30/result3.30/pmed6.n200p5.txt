@@ -1,0 +1,7 @@
+uncovered number:0
+31 63 116 168 172 
+run time: 0.052000
+uncovered number:0
+run time: 0.043000
+uncovered number:0
+run time: 0.045000

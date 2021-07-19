@@ -1,0 +1,7 @@
+uncovered number:0
+343 348 392 738 783 
+run time: 2.264000
+uncovered number:0
+run time: 1.875000
+uncovered number:0
+run time: 1.827000

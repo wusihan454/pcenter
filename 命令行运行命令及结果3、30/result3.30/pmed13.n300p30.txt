@@ -1,0 +1,7 @@
+uncovered number:0
+9 12 14 20 22 31 39 40 55 72 83 105 107 124 130 137 175 178 186 188 189 192 201 205 207 217 254 269 274 290 
+run time: 0.127000
+uncovered number:0
+run time: 0.100000
+uncovered number:0
+run time: 0.103000

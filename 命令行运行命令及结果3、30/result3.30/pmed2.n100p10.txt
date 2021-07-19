@@ -1,0 +1,7 @@
+uncovered number:0
+9 10 15 45 59 67 76 84 95 97 
+run time: 0.018000
+uncovered number:0
+run time: 0.013000
+uncovered number:0
+run time: 0.015000

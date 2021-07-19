@@ -1,0 +1,7 @@
+uncovered number:0
+10 211 301 321 399 473 551 574 595 599 
+run time: 0.673000
+uncovered number:0
+run time: 0.560000
+uncovered number:0
+run time: 0.538000

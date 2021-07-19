@@ -1,0 +1,7 @@
+uncovered number:0
+151 214 230 517 691 
+run time: 0.505000
+uncovered number:0
+run time: 0.414000
+uncovered number:0
+run time: 0.411000

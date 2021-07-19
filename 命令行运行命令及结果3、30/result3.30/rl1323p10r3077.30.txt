@@ -1,0 +1,7 @@
+uncovered number:0
+203 225 237 273 326 337 841 1043 1133 1301 
+run time: 155.287003
+uncovered number:0
+run time: 165.287003
+uncovered number:0
+run time: 168.923996

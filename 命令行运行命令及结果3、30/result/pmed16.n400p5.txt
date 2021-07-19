@@ -1,0 +1,3 @@
+uncovered number:0
+19 24 58 225 377 
+run time: 0.233000

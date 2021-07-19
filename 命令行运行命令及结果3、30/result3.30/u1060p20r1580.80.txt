@@ -1,0 +1,7 @@
+uncovered number:0
+10 56 110 155 194 294 342 387 472 601 662 694 718 741 765 823 859 949 989 1029 
+run time: 12.781000
+uncovered number:0
+run time: 13.741000
+uncovered number:0
+run time: 13.178000
