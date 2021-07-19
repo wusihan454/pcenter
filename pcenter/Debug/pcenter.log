@@ -1,5 +1,6 @@
 ﻿  pcenter.cpp
-C:\Users\吴思晗\Desktop\pcenter\pcenter\pcenter.cpp(252): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\吴思晗\Desktop\pcenter\pcenter\pcenter.cpp(243): warning C4101: “mark”: 未引用的局部变量
-C:\Users\吴思晗\Desktop\pcenter\pcenter\pcenter.cpp(301): warning C4101: “mark”: 未引用的局部变量
-  pcenter.vcxproj -> C:\Users\吴思晗\Desktop\pcenter\Debug\pcenter.exe
+C:\Users\belle\Desktop\pcenter\pcenter\pcenter.cpp(252): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\belle\Desktop\pcenter\pcenter\pcenter.cpp(243): warning C4101: “mark”: 未引用的局部变量
+C:\Users\belle\Desktop\pcenter\pcenter\pcenter.cpp(301): warning C4101: “mark”: 未引用的局部变量
+  LINK : 没有找到 C:\Users\belle\Desktop\pcenter\Debug\pcenter.exe 或上一个增量链接没有生成它；正在执行完全链接
+  pcenter.vcxproj -> C:\Users\belle\Desktop\pcenter\Debug\pcenter.exe

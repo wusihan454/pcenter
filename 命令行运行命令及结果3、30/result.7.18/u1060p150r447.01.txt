@@ -1,0 +1,4 @@
+uncovered number:0   seed: 1000 tabu: 2 using time: 0.015000  iter: 213  
+uncovered number:0   seed: 2000 tabu: 2 using time: 0.013000  iter: 420  
+uncovered number:0   seed: 3000 tabu: 2 using time: 0.009000  iter: 216  
+uncovered number:0   seed: 4000 tabu: 2 using time: 0.014000  iter: 473  

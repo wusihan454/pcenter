@@ -1,0 +1,1 @@
+uncovered number:0   seed: 1000 tabu: 2 using time: 0.024000  iter: 2  

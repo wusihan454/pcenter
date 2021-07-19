@@ -1,3 +1,0 @@
-uncovered number:0
-1 6 84 89 198 298 308 344 355 398 
-run time: 0.323000

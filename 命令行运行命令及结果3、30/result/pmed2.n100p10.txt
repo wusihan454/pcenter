@@ -1,3 +1,0 @@
-uncovered number:0
-8 15 42 46 59 67 72 76 81 95 
-run time: 0.024000

@@ -1,3 +1,0 @@
-uncovered number:0
-12 23 59 65 77 
-run time: 0.014000

@@ -1,10 +1,10 @@
 ﻿  pcenter.cpp
-C:\Users\吴思晗\Desktop\pcenter\pcenter\pcenter.cpp(252): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\吴思晗\Desktop\pcenter\pcenter\pcenter.cpp(243): warning C4101: “mark”: 未引用的局部变量
-C:\Users\吴思晗\Desktop\pcenter\pcenter\pcenter.cpp(301): warning C4101: “mark”: 未引用的局部变量
+C:\Users\belle\Desktop\pcenter\pcenter\pcenter.cpp(252): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\belle\Desktop\pcenter\pcenter\pcenter.cpp(243): warning C4101: “mark”: 未引用的局部变量
+C:\Users\belle\Desktop\pcenter\pcenter\pcenter.cpp(301): warning C4101: “mark”: 未引用的局部变量
   正在生成代码
-  1 of 93 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
+  1 of 94 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
-  pcenter.vcxproj -> C:\Users\吴思晗\Desktop\pcenter\Release\pcenter.exe
+  pcenter.vcxproj -> C:\Users\belle\Desktop\pcenter\Release\pcenter.exe

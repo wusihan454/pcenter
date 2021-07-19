@@ -341,10 +341,7 @@ void check()
 		}
 		if (!mark)num++;
 	}
-	printf("uncovered number:%d\n", num);
-	for (int i = 0; i < point; i++)
-		if (best_selected[i]) printf("%d ", i);
-	printf("\n");
+	printf("uncovered number:%d", num);
 }
 
 void search()
@@ -374,7 +371,7 @@ void search()
 			memcpy(best_uncovered, uncovered, point * sizeof(bool));
 			memcpy(best_selected, selected, point * sizeof(bool));
 			best_uncovered_num = uncovered_num;
-			printf("best_uncovered %d\n", best_uncovered_num);
+			//printf("best_uncovered %d\n", best_uncovered_num);
 		}
 		else if (last_uncovered_num <= uncovered_num)
 		{
@@ -407,14 +404,14 @@ void search()
 		iter++;
 	}
 }
-/*
+
 int main(int argc, char* argv[])
 {
 
 	clock_t start_t = clock();
 #pragma warning(disable:4996)
 	strcpy(datapath, argv[1]);
-	strcpy(resultpath, argv[2]);
+	 strcpy(resultpath, argv[2]);
 	timelimit = atoi(argv[3]);
 	unsigned seed = atoi(argv[4]);
 	srand(seed);
@@ -422,26 +419,43 @@ int main(int argc, char* argv[])
 	FILE *stream1;
 	FILE *stream2;
 	freopen_s(&stream1, datapath, "r", stdin);
-	freopen_s(&stream2, resultpath, "w", stdout);
+	freopen_s(&stream2, resultpath, "a", stdout);
 	readtxt();
 	create_init_solution();
 	search();
 	check();
 	end_t = clock();//时钟检测                                                       
 	float usedtime = (float(end_t - start_t)) / CLOCKS_PER_SEC;
-	printf("\n using time: %f\n", usedtime);
+	printf(" tabu:2 seed:%d using time: %f iter: %d\n",seed, usedtime,iter);
 	realse_mem();
 	fclose(stdin);//关闭文件
 	fclose(stdout);//关闭文件
+	for (int i = 0; i < point; i++)
+		delete[] map[i];
+	delete[] map;
+	delete[] selected;
+	delete[] best_selected;
+	delete[] last_selected;
+	delete[] fix;
+	delete[] uncovered;
+	delete[] last_uncovered;
+	delete[] best_uncovered;
+	delete[] tabu;
+	delete[] W;
+	delete[] delta;
+	delete[] delta_copy;
+	delete[] neighbor_number;
+	delete[] all_selected;
+	delete[] covered_by;
 }
-*/
 
+/*
 int main()
 {
 	FILE* stream1;
 	freopen_s(&stream1, "./data/pcb3038p50r298.04.txt", "r", stdin);
 	//freopen_s(&stream1, "out.txt", "w", stdout);
-	int tm = 1000;
+	int tm = 2000;
 	timelimit = 1000;
 	srand(tm);
 	readtxt();
@@ -471,3 +485,4 @@ int main()
 	delete[] covered_by;
 	return 0;
 }
+*/

@@ -1,3 +1,0 @@
-uncovered number:0
-48 169 190 448 493 
-run time: 0.267000

@@ -1,0 +1,4 @@
+uncovered number:1   seed: 1000 tabu: 2 using time: 1000.000977  iter: 10662056  
+uncovered number:0   seed: 2000 tabu: 2 using time: 416.869995  iter: 4448192  
+no swap temporary
+uncovered number:1   seed: 3000 tabu: 2 using time: 1000.000977  iter: 10668916  
